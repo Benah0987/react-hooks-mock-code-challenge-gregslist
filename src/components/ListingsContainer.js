@@ -13,13 +13,13 @@ function ListingsContainer() {
   return (
     <main>
       <ul className="cards">
-        {listings.map((listing) => (
-          <ListingCard 
-             key={listing.id} 
-             description = {listing.description}
-             image = {listing.image}
-             location = {listing.location}
-             
+        {listings.map(({ id, description, image, location }) => (
+          <ListingCard
+            key={id}
+            id={id}
+            description={description}
+            image={image}
+            location={location}
           />
         ))}
       </ul>
