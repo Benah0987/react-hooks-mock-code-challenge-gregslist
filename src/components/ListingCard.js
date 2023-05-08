@@ -8,7 +8,17 @@ function ListingCard(props) {
 
   const handleFav = () =>{
       setisFavorite(!isFavorite)
+      
   }
+
+  const handleDelete = () => {
+    fetch(`http://localhost:6001/listings/${id}`, {
+      method: "DELETE",
+    })
+    .then(() => {
+       window.location.reload();
+    });
+  };
   return ( 
     <li className="card">
       <div className="image">
@@ -24,7 +34,7 @@ function ListingCard(props) {
         </button>    
         <strong>{props.description}</strong>
         <span> · {props.location}</span>
-        <button className="emoji-button delete">🗑</button>
+        <button className="emoji-button delete" onClick = {handleDelete}>🗑</button>
       </div>
     </li>
   );
