@@ -18,7 +18,9 @@ function ListingsContainer() {
              key={listing.id} 
              description = {listing.description}
              image = {listing.image}
-             location = {listing.location} />
+             location = {listing.location}
+             
+          />
         ))}
       </ul>
     </main>

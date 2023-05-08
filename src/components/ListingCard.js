@@ -1,20 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 
-function ListingCard() {
-  return (
+//to see if its fav or not we add a state
+//passing the props from the ListingContainer
+function ListingCard(props) {
+//create a state variable isFavorite and a function setIsFavorite to update it
+  const [isFavorite, setisFavorite] = useState(false)
+
+  const handleFav = () =>{
+      setisFavorite(!isFavorite)
+  }
+  return ( 
     <li className="card">
       <div className="image">
         <span className="price">$0</span>
-        <img src={"https://via.placeholder.com/300x300"} alt={"description"} />
+        <img src={props.image} alt={props.description} />
       </div>
       <div className="details">
-        {true ? (
-          <button className="emoji-button favorite active">★</button>
-        ) : (
-          <button className="emoji-button favorite">☆</button>
-        )}
-        <strong>{"description"}</strong>
-        <span> · {"location"}</span>
+       <button 
+             className={`emoji-button favorite ${isFavorite ? "active" : ""}`}
+             onClick={handleFav}
+           >
+            {isFavorite ? "★" : "☆"}
+        </button>    
+        <strong>{props.description}</strong>
+        <span> · {props.location}</span>
         <button className="emoji-button delete">🗑</button>
       </div>
     </li>
